@@ -26,7 +26,7 @@ function setFormData() {
 function onFormSubmit(event) {
   event.preventDefault();
 
-  if (!form.name.value || !form.email.value) {
+  if (!form.email.value || !form.message.value) {
     return alert('Будь ласка, заповніть усі поля!');
   }
 
