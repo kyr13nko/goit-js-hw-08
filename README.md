@@ -1,100 +1,45 @@
-# Parcel template
+## Task 1 - Image gallery
 
-Цей проект був створений за допомогою Parcel. Для знайомства та налаштування
-додаткових можливостей [звернися до документації](https://parceljs.org/).
+Add the SimpleLightbox library as a project dependency using npm (the CDN link
+from your past work is no longer needed).
 
-## Підготовка нового проєкту
+1. Use your JavaScript code from the previous homework, but refactor it given
+   that the library was installed via npm (import/export syntax).
+2. In order to add the CSS code of the library to the project, you need to add
+   one more import, aside from the one described in the documentation.
 
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай і встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Склонуй цей репозиторій.
-3. Зміни ім'я папки з `parcel-project-template` на ім'я свого проєкту.
-4. Створи новий порожній репозиторій на GitHub.
-5. Відкрий проєкт у VSCode, запусти термінал і зв'яжи проєкт із
-   GitHub-репозиторієм
-   [за інструкцією](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
-6. Встановіть залежності проекту в терміналі командою `npm install`.
-7. Запустіть режим розробки, виконавши команду `npm start`.
-8. Перейди в браузері за адресою [http://localhost:1234](http://localhost:1234).
-   Ця сторінка буде автоматично перезавантажуватися після збереження змін у
-   файлах проєкту.
+```// Described in documentation;
 
-## Файли і папки
-
-- Усі паршали файлів стилів мають лежати в папці `src/sass` та імпортуватися в
-  файли стилів сторінок. Наприклад, для `index.html` файл стилів називається
-  `index.scss`.
-- Зображення додавай у папку ``src/images`. Збирач оптимізує їх, але тільки під
-  час деплою продакшн-версії проєкту. Усе це відбувається в хмарі, щоб не
-  навантажувати твій комп'ютер, оскільки на слабких машинах це може зайняти
-  багато часу.
-
-## Деплой
-
-Для налаштування деплою проєкту необхідно виконати кілька додаткових кроків з
-налаштування твого репозиторію. Зайди у вкладку `Settings` і в підсекції
-`Actions` вибери вибери пункт `General`.
-
-![GitHub actions settings](./assets/actions-config-step-1.png)
-
-Перегорни сторінку до останньої секції, в якій переконайся, що обрано опції як
-на наступному зображенні і натисни `Save`. Без цих налаштувань у збірки буде
-недостатньо прав для автоматизації процесу деплою.
-
-![GitHub actions settings](./assets/actions-config-step-2.png)
-
-Продакшн-версія проєкту буде автоматично збиратися і деплоюватися на GitHub
-Pages, у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад,
-після прямого пушу або прийнятого пул-реквесту. Для цього необхідно у файлі
-`package.json` відредагувати поле `homepage` і скрипт `build`, замінивши
-`your_username` і `your_repo_name` на свої, і відправити зміни на GitHub.
-
-```json
-"homepage": "https://your_username.github.io/your_repo_name/",
-"scripts": {
-  "build": "parcel build src/*.html --public-url /your_repo_name/"
-},
+import SimpleLightbox from "simplelightbox";
 ```
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) і
-виставити роздачу продакшн версії файлів із папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+## Task 2 - Video playback
 
-![GitHub Pages settings](./assets/repo-settings.png)
+1. Check out the documentation of the Vimeo player library.
+2. Add the library as a project dependency via npm.
+3. Initialize the player in the script file as described in the pre-existing
+   player section, but note that you have added the player as an npm package,
+   not via CDN.
+4. Read the documentation of the on() method and start tracking the timeupdate
+   event - playback time update.
+5. Save playback time to local storage. Let the key for the storage be the
+   "videoplayer-current-time" string.
+6. When reloading the page, use the setCurrentTime() method to resume playback
+   from the saved position.
+7. Add the lodash.throttle library to the project and make sure that the
+   playback time is updated in the storage once a second or less frequent.
 
-### Статус деплоя
+## Task 3 - Feedback form
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
-
-- **Жовтий колір** - виконується збірка і деплой проєкту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, складання або деплою сталася помилка.
-
-Детальнішу інформацію про статус можна подивитися, клікнувши на іконку, і в
-випадаючому вікні перейти за посиланням `Details`.
-
-![Deployment status](./assets/status.png)
-
-### Жива сторінка
-
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною у відредагованій властивості `homepage`. Наприклад, ось
-посилання на живу версію для цього репозиторію
-[https://goitacademy.github.io/parcel-project-template](https://goitacademy.github.io/parcel-project-template).
-
-Якщо відкривається порожня сторінка, переконайся що у вкладці `Console` немає
-помилок пов'язаних із неправильними шляхами до CSS і JS файлів проекту
-(**404**). Швидше за все усього у тебе неправильне значення властивості
-`homepage` або скрипта `build` у файлі `package.json`.
-
-## Як це працює
-
-![How it works](./assets/how-it-works.png)
-
-1. Після кожного пушу в гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) з файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проєкт ініціалізується і
-   проходить збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн-версія файлів проєкту
-   відправляється в гілку `gh-pages`. В іншому разі, в балці виконання скрипта
-   буде вказано в чому проблема.
+1. Track the input event on the form, and each time write to local storage an
+   object with the email and message fields, in which you save the current
+   values of the form fields. Let the key for the storage be the
+   "feedback-form-state" string.
+2. When loading the page, check the state of the storage, and if it stores some
+   data, use it to fill in the form fields. Otherwise, the fields must be empty.
+3. When submitting the form, clear the storage and form fields, and also display
+   the object with the email and message fields and their current values in the
+   console.
+4. Make sure that the storage is updated no more than once every 500
+   milliseconds. To do this, add to the project and use the lodash.throttle
+   library.
